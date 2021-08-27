@@ -18,7 +18,7 @@ namespace NZMSA_HYD.GraphQL.Mutations.BlobSaS
 
     public class BlobSaSQueries
     {
-
+        // Returns users github info + SaSToken
         [UseAppDbContext]
         [Authorize]
         public SaSPayload GetAccountSaSToken(ClaimsPrincipal claimsPrincipal, [ScopedService] AppDbContext context)

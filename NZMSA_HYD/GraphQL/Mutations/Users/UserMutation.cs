@@ -33,8 +33,6 @@ namespace NZMSA_HYD.GraphQL.Mutations.Users
         {
             var githubClientIDStr = AzureKeyVault.GetKey(Startup.Configuration["KeyVault:GithubId"]);
             var githubClientSecretStr = AzureKeyVault.GetKey(Startup.Configuration["KeyVault:GithubSecret"]);
-            //var githubClientIDStr = Startup.Configuration["Github:ClientId"];
-            //var githubClientSecretStr = Startup.Configuration["Github:ClientSecret"];
             var request = new OauthTokenRequest(githubClientIDStr, githubClientSecretStr, input.Code);
 
             var client = new GitHubClient(new ProductHeaderValue("HYD"));
@@ -72,7 +70,6 @@ namespace NZMSA_HYD.GraphQL.Mutations.Users
             }
             //authentication successful so generate jwt token
             var JWTSecret = AzureKeyVault.GetKey(Startup.Configuration["KeyVault:JWTSecret"]);
-            //var JWTSecret = Startup.Configuration["JWT:Secret"];
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWTSecret));
             var credentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
 

@@ -17,6 +17,7 @@ namespace NZMSA_HYD.BlobSaSBuilder
 {
     public class BlobStorageService : Controller
     {
+        // App's Azure Storage Blob account name
         private readonly string _accountName;
 
         public BlobStorageService()
@@ -25,9 +26,10 @@ namespace NZMSA_HYD.BlobSaSBuilder
         }
 
 
+        // Returns a SaSToken for authorizing the user to create containers
+        // and upload images in apps Azure Storage Blob account
         public string GetAccountSasToken()
         {
-            // TODO set proper resource restrictions
             var sasBuilder = new AccountSasBuilder()
             {
                 StartsOn = DateTimeOffset.UtcNow.AddMinutes(-2),
@@ -39,7 +41,6 @@ namespace NZMSA_HYD.BlobSaSBuilder
 
             sasBuilder.SetPermissions(AccountSasPermissions.All);
 
-            //var blobAccountKey = Startup.Configuration["AzureBlob:Key"];
             var blobAccountKey = AzureKeyVault.GetKey(Startup.Configuration["KeyVault:AzureStorageBlob"]);
             var sasToken = sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(_accountName, blobAccountKey));
 

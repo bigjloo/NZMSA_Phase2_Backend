@@ -11,6 +11,7 @@ namespace NZMSA_HYD.KeyVault
 {
     public static class AzureKeyVault
     {
+        // Gets private key values from Azure KeyVault 
         public static string GetKey(string keyVaultName)
         {
 

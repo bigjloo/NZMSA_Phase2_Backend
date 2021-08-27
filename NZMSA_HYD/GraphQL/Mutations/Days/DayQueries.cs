@@ -16,6 +16,7 @@ namespace NZMSA_HYD.GraphQL.Mutations.Days
     [ExtendObjectType(name: "Query")]
     public class DayQueries
     {
+        // Returns shared Day access using publish key
         [UseAppDbContext]
         public Day GetDay(String publishKey, [ScopedService] AppDbContext context)
         {
@@ -24,6 +25,7 @@ namespace NZMSA_HYD.GraphQL.Mutations.Days
             return day;
         }
 
+        // Returns user's current Day
         [UseAppDbContext]
         [Authorize]
         public Day GetToday(ClaimsPrincipal claimsPrincipal, [ScopedService] AppDbContext context)

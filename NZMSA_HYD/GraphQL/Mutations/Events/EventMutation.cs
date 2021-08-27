@@ -17,6 +17,7 @@ namespace NZMSA_HYD.GraphQL.Mutations.Events
     [ExtendObjectType(name: "Mutation")]
     public class EventMutation
     {
+        // Replaces current day event's with new events 
         [UseAppDbContext]
         [Authorize]
         public async Task<Day> AddEventsAsync(ClaimsPrincipal claimsPrincipal, AddEventsInput input, [ScopedService] AppDbContext context, CancellationToken cancellationToken)
