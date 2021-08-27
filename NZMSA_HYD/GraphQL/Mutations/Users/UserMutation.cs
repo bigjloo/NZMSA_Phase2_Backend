@@ -87,7 +87,6 @@ namespace NZMSA_HYD.GraphQL.Mutations.Users
                 signingCredentials: credentials);
 
             string token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
-
             return new LoginPayload(user, token);
         }
     }

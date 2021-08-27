@@ -21,7 +21,6 @@ namespace NZMSA_HYD.GraphQL.Mutations.Days
         public Day GetDay(String publishKey, [ScopedService] AppDbContext context)
         {
             var day = context.Days.FirstOrDefault(d => d.PublishKey == publishKey);
-
             return day;
         }
 

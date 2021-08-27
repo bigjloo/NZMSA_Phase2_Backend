@@ -24,7 +24,5 @@ namespace NZMSA_HYD.GraphQL.Mutations.Users
             var user = context.Users.Find(int.Parse(userIdStr));
             return user;
         }
-
-
     }
 }

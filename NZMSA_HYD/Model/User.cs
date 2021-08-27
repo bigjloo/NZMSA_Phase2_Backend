@@ -18,6 +18,5 @@ namespace NZMSA_HYD.Model
 
         public string ImageURI { get; set; }
         public ICollection<Day> Days { get; set; } = new List<Day>();
-
     }
 }

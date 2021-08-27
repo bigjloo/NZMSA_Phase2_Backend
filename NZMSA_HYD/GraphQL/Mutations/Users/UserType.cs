@@ -25,7 +25,6 @@ namespace NZMSA_HYD.GraphQL.Mutations.Users
                 .ResolveWith<Resolvers>(r => r.GetDays(default!, default!, default))
                 .UseDbContext<AppDbContext>()
                 .Type<ListType<DayType>>();
-
         }
 
         private class Resolvers

@@ -71,8 +71,7 @@ namespace NZMSA_HYD.GraphQL.Mutations.Events
 
             }
 
-            await context.SaveChangesAsync(cancellationToken);
-            
+            //await context.SaveChangesAsync(cancellationToken);
             return today;
         }
     }

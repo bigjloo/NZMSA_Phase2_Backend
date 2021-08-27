@@ -62,7 +62,6 @@ namespace NZMSA_HYD
 
             KeyVaultSecret azureSQL = client.GetSecret(Configuration["KeyVault:SQLConnectionString"]);
             string azureSQLConnectionString = azureSQL.Value;
-            //var azureSQLConnectionString = Configuration.GetConnectionString("nzmsa-azure");
             
             // Registers DBContext
             services.AddPooledDbContextFactory<AppDbContext>(options =>
@@ -79,7 +78,7 @@ namespace NZMSA_HYD
             // Generates a key from our own secret key
             KeyVaultSecret JWTSecret = client.GetSecret(Configuration["KeyVault:JWTSecret"]);
             string JWTSecretStr = JWTSecret.Value;
-            //var JWTSecretStr = Configuration["JWT:Secret"];
+
             var key = Encoding.UTF8.GetBytes(JWTSecretStr);
             var signingKey = new SymmetricSecurityKey(key);
 
