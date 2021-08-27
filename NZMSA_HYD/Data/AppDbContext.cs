@@ -34,10 +34,6 @@ namespace NZMSA_HYD.Data
                 .HasOne(e => e.Day)
                 .WithMany(d => d.Events)
                 .HasForeignKey(e => e.DayId); 
-                
-                
-                
-
         }
     }
 }

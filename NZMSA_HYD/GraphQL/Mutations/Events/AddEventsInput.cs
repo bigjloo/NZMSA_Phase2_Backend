@@ -10,10 +10,11 @@ namespace NZMSA_HYD.GraphQL.Mutations.Events
     public record EventInput(
         string Name,
         string Description,
-        string PhotoURI);
+        string PhotoURI
+    );
 
     public record AddEventsInput(
-            EventInput[] Events,
-            string PublishKey
-        );
+        EventInput[] Events,
+        string PublishKey
+    );
 }

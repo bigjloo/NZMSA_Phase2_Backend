@@ -9,5 +9,4 @@ namespace NZMSA_HYD.GraphQL.Mutations.BlobSaS
         string Token,
         string Github
         );
-
 }

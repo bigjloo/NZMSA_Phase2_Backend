@@ -34,10 +34,8 @@ namespace NZMSA_HYD.GraphQL.Mutations.Events
                     Date = DateTime.Today,
                     UserId = userId,
                 };
-
                 context.Days.Add(today);
                 await context.SaveChangesAsync(cancellationToken);
-
             } else
             {
                 // Deletes all events for the day
@@ -56,7 +54,6 @@ namespace NZMSA_HYD.GraphQL.Mutations.Events
             // Replace with new Events
             foreach (var e in input.Events)
             {
-
                 var newEvent = new Event
                 {
                     Name = e.Name,
@@ -65,13 +62,10 @@ namespace NZMSA_HYD.GraphQL.Mutations.Events
                     Order = count++,
                     DayId = today.Id
                 };
-
                 context.Events.Add(newEvent);
                 await context.SaveChangesAsync(cancellationToken);
-
             }
 
-            //await context.SaveChangesAsync(cancellationToken);
             return today;
         }
     }

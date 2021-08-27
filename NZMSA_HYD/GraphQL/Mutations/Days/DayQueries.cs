@@ -35,5 +35,4 @@ namespace NZMSA_HYD.GraphQL.Mutations.Days
             return today;
         }
     }
-
 }

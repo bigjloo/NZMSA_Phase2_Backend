@@ -15,7 +15,6 @@ namespace NZMSA_HYD.GraphQL.Mutations.Users
     [ExtendObjectType(name: "Query")]
     public class UserQueries
     {
-
         [UseAppDbContext]
         [Authorize]
         public User GetSelf(ClaimsPrincipal claimsPrincipal, [ScopedService] AppDbContext context)

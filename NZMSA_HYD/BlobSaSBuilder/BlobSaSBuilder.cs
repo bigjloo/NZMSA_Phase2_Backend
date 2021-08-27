@@ -17,14 +17,12 @@ namespace NZMSA_HYD.BlobSaSBuilder
 {
     public class BlobStorageService : Controller
     {
-        // App's Azure Storage Blob account name
         private readonly string _accountName;
 
         public BlobStorageService()
         {
             _accountName = Startup.Configuration["AzureBlob:AccountName"];
         }
-
 
         // Returns a SaSToken for authorizing the user to create containers
         // and upload images in apps Azure Storage Blob account

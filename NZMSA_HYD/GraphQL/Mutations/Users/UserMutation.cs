@@ -64,10 +64,10 @@ namespace NZMSA_HYD.GraphQL.Mutations.Users
                     Github = currentUser.Login,
                     ImageURI = currentUser.AvatarUrl,
                 };
-
                 context.Users.Add(user);
                 await context.SaveChangesAsync(cancellationToken);
             }
+
             //authentication successful so generate jwt token
             var JWTSecret = AzureKeyVault.GetKey(Startup.Configuration["KeyVault:JWTSecret"]);
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWTSecret));
@@ -80,11 +80,12 @@ namespace NZMSA_HYD.GraphQL.Mutations.Users
 
             // returns a JWT token which can be used to login, expires in 90 days
             var jwtToken = new JwtSecurityToken(
-                "HYD",
-                "NZMSA-2021",
-                claims,
-                expires: DateTime.Now.AddDays(90),
-                signingCredentials: credentials);
+                    "HYD",
+                    "NZMSA-2021",
+                    claims,
+                    expires: DateTime.Now.AddDays(90),
+                    signingCredentials: credentials
+                );
 
             string token = new JwtSecurityTokenHandler().WriteToken(jwtToken);
             return new LoginPayload(user, token);
