@@ -36,7 +36,6 @@ namespace NZMSA_HYD.BlobSaSBuilder
                 ResourceTypes = AccountSasResourceTypes.All,
                 Protocol = SasProtocol.HttpsAndHttp
             };
-
             sasBuilder.SetPermissions(AccountSasPermissions.All);
 
             var blobAccountKey = AzureKeyVault.GetKey(Startup.Configuration["KeyVault:AzureStorageBlob"]);
